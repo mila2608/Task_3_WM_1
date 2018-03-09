@@ -4,6 +4,7 @@ import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Human extends Mammal {
     boolean sex;
@@ -128,56 +129,27 @@ public class Human extends Mammal {
     }
 
     public Human relationships(Human h) {
-        boolean relatResult = false;
         Woman w = null;
         Man m = null;
         if (h.getClass() == Woman.class)
-return w = (Woman) h;
+            return w = (Woman) h;
         else
             return m = (Man) h;
 
     }
 
-    /*public static void compatibility(ArrayList<Human> h, int x, int y) {
-        if (h.get(x).getClass() != h.get(y).getClass()) {
-            Woman.bornChild();
-            System.out.println(h.get(x).getClass());
-            System.out.println(h.get(y).getClass());
-        } else
-           {
-            System.out.println(h.get(x).getClass());
-            System.out.println(h.get(y).getClass());
-            System.out.println("not supported");
+   public static void compatibility(Human x, Human y) {
 
-        }
-    }*/
-
-    public static Human compatibility(Human x, Human y) {
-        //    Human child1 = null;
         Random r = new Random();
-        Woman w = null;
-        Man m = null;
-        if (x.getClass() != y.getClass()) {
-            if (x.getClass() == Woman.class) {
-                w = (Woman) x;
-                m = (Man) y;
-
-            }
-            else {
-                m = (Man) x;
-                w = (Woman) y;
-
-            }
-        }
-
-        x.relationships(m);
-          else
-
-        Woman.bornChild(null, null);
-
+        Child child = null;
+if (x.getClass() == y.getClass())
+    child = null;
+else {
+    child = Woman.bornChild(x, y);
+}
+   //    System.out.println(child);
 
     }
-
 
 } //class
 

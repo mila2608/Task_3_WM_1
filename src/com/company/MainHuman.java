@@ -29,10 +29,11 @@ public class MainHuman {
         }
         Human h1 = humans.get(x);
         Human h2 = humans.get(y);
-   //     double p = r.nextDouble();
-  //      System.out.println(p);
+     //   System.out.println(h1);
+      //  System.out.println(h2);
 
-        Human.compatibility(man1, woman1);
+        Human.compatibility(man1, woman2);
+     //   Woman.bornChild(man1, woman2);
   //      Human.talk(man1, man2);
    //     Human.sustain(h1, h2);
   //      Human.spendTime(h1, h2);

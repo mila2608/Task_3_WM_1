@@ -18,57 +18,39 @@ public class Woman extends Human implements Born {
         Child child1 = new Child();
     }
 
-    public static Human relationships(Man m){
-return m;
-    }
-
-    public static Human bornChild(Human x, Human y) {
+    public static Child bornChild(Human x, Human y) {
         Scanner scanner = new Scanner(System.in);
         String str;
-        Woman w = null;
-        Man m = null;
+        Child child1 = new Child();
         Random r = new Random();
         boolean p = r.nextDouble() * 1.1 < 0.5 ? true : false;
-        Child child1 = null;
 
-        if (x == null) {
-            child1 = null;
-        }
-
-        if (x.getClass() == Woman.class) {
-            w = (Woman) x;
-            m = (Man) y;
-
-        } else {
-            m = (Man) x;
-            w = (Woman) y;
-
-        }
-        double weightDiff = Math.abs(w.getWeight() - m.getWeight());
-        double heightDiff = Math.abs(w.getHeight() - m.getHeight());
+        double weightDiff = Math.abs(x.getWeight() - y.getWeight());
+        double heightDiff = Math.abs(x.getHeight() - y.getHeight());
         if (p == true) {
-            child1.sex = m.isSex();
-            child1.weight = (m.getWeight() + 0.1) * weightDiff;
-            child1.height = (m.getHeight() + 0.1) * heightDiff;
+            child1.sex = true;
+            child1.weight = (x.getWeight() + 0.1) * weightDiff;
+            child1.height = (x.getHeight() + 0.1) * heightDiff;
         } else {
-            child1.sex = w.isSex();
-            child1.weight = (w.getWeight() + 0.1) * weightDiff;
-            child1.height = (w.getHeight() + 0.1) * heightDiff;
+            child1.sex = false;
+            child1.weight = (y.getWeight() + 0.1) * weightDiff;
+            child1.height = (y.getHeight() + 0.1) * heightDiff;
         }
 
-        child1.secondName = m.secondName;
+        child1.secondName = y.secondName;
 
         //      System.out.println("Enter child Human First Name");
         //     child1.firstName = scanner.nextLine();
-        if (x.getClass() == Woman.class) {
+
             child1.firstName = "hghghff";
-        }
+
 
         System.out.println(child1);
 
 
-       return child1;
+            return child1;
 
     }
+
 
 }
