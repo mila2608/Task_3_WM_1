@@ -15,41 +15,37 @@ public class Woman extends Human implements Born {
     @Override
     public void toBorn(Object Human) {
         System.out.println("Child is born");
-        Child child1 = new Child();
+        Human child = null;
+        {
+        }
     }
 
-    public static Child bornChild(Human x, Human y) {
+    public Human bornChild(Man m) {
         Scanner scanner = new Scanner(System.in);
         String str;
-        Child child1 = new Child();
         Random r = new Random();
+        Human child = null;
         boolean p = r.nextDouble() * 1.1 < 0.5 ? true : false;
+        double weightDiff = Math.abs(this.getWeight() - m.getWeight());
+        double heightDiff = Math.abs(this.getHeight() - m.getHeight());
 
-        double weightDiff = Math.abs(x.getWeight() - y.getWeight());
-        double heightDiff = Math.abs(x.getHeight() - y.getHeight());
         if (p == true) {
-            child1.sex = true;
-            child1.weight = (x.getWeight() + 0.1) * weightDiff;
-            child1.height = (x.getHeight() + 0.1) * heightDiff;
+            child = new Man();
+            child.sex = true;
+            child.weight = Math.rint(100.0 * (m.getWeight() + 0.1) * weightDiff)/100.0;
+            child.height = Math.rint(100.0 * (m.getHeight() + 0.1) * heightDiff)/100.0;
         } else {
-            child1.sex = false;
-            child1.weight = (y.getWeight() + 0.1) * weightDiff;
-            child1.height = (y.getHeight() + 0.1) * heightDiff;
+            child = new Woman();
+            child.sex = false;
+            child.weight = Math.rint(100.0 * (this.getWeight() + 0.1) * weightDiff)/100.0;
+            child.height = Math.rint(100.0 * (this.getHeight() + 0.1) * heightDiff)/100.0;
         }
-
-        child1.secondName = y.secondName;
-
-        //      System.out.println("Enter child Human First Name");
-        //     child1.firstName = scanner.nextLine();
-
-            child1.firstName = "hghghff";
-
-
-        System.out.println(child1);
-
-
-            return child1;
-
+        child.secondName = m.secondName;
+      //       System.out.println("Enter child Human First Name");
+     //        child.firstName = scanner.nextLine();
+        child.firstName = "New Child First Name";
+        System.out.println(child);
+        return child;
     }
 
 

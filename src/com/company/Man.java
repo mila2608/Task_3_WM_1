@@ -6,4 +6,11 @@ public class Man extends Human {
         super(sex, firstName, secondName, weight, height);
     }
 
+    public Man() {
+    }
+
+
+
+
 }
+
