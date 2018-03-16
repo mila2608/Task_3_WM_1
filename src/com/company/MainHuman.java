@@ -9,16 +9,22 @@ import java.util.stream.Stream;
 public class MainHuman {
     public static void main(String[] args) {
         Random r = new Random();
+        double rDouble;
+        rDouble = r.nextDouble()*10.9;
         ArrayList<Human> humans = new ArrayList<>();
-           /*  Stream.generate(()-> new Human(true, "FN", "SN", 80.3, 185.7))
+             /*Stream.generate(()-> {
+                 return new Man(true, "FN", "SN", rDouble, rDouble);
+             })
                     .limit(6)
-                    .forEach(System.out::println);
-   */
+                    .forEach(System.out::println);*/
+      ManFactory<Man1>manFactory = Man1::new;
+      Man1 man01 = manFactory.create(true, "FN01", "LN01", 178.4, 87);
+ //       System.out.println(man01);
 
-        Human man1 = new Man(true, "Man1 FN", "Man1 SN", 84.5, 182.5);
-        Human man2 = new Man(true, "Man2 FN", "Man2 SN", 133.2, 192.1);
-        Human woman1 = new Woman(false, "Woman1 FN", "Woman1 SN", 53.6, 164.8);
-        Human woman2 = new Woman(false, "Woman2 FN", "Woman2 SN", 67.9, 172.3);
+        Man man1 = new Man(true, "Man1 FN", "Man1 SN", 84.5, 182.5);
+        Man man2 = new Man(true, "Man2 FN", "Man2 SN", 133.2, 192.1);
+        Woman woman1 = new Woman(false, "Woman1 FN", "Woman1 SN", 53.6, 164.8);
+        Woman woman2 = new Woman(false, "Woman2 FN", "Woman2 SN", 67.9, 172.3);
         humans.add(man1);
         humans.add(man2);
         humans.add(woman1);
@@ -38,10 +44,10 @@ public class MainHuman {
         }
         Human h1 = humans.get(x);
         Human h2 = humans.get(y);
-        //   System.out.println(h1);
-        //  System.out.println(h2);
+           System.out.println(h1);
+          System.out.println(h2);
 
-       Human.compatibility(woman1, man2);
+       Human.compatibility(h1, h2);
      //   h1.relationships(woman1, man2);
      //   Woman.bornChild(man1, woman2);
   //      Human.talk(man1, man2);

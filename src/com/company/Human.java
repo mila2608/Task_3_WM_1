@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class Human {
+public abstract class Human {
     boolean sex;
     String firstName;
     String secondName;
@@ -54,7 +54,7 @@ public class Human {
     public static boolean talk(Human x, Human y) {
         System.out.println("Talk results: ");
         boolean talkResult = true;
-        /*Random r = new Random();
+        Random r = new Random();
         if (x.getClass() == y.getClass()) {
             if (x instanceof Woman)
                 talkResult = true;
@@ -63,7 +63,7 @@ public class Human {
         }
         if (x.getClass() != y.getClass()) {
             talkResult = true;
-        }*/
+        }
 
         System.out.println(talkResult);
         return talkResult;
@@ -72,7 +72,7 @@ public class Human {
     public static boolean sustain(Human x, Human y) {
         System.out.println("Sustain results: ");
         boolean sustainResult = true;
-       /* Random r = new Random();
+        Random r = new Random();
         if (x.getClass() == y.getClass()) {
             if (x instanceof Woman)
                 sustainResult = r.nextDouble() * 1.1 < 0.5 ? true : false;
@@ -81,7 +81,7 @@ public class Human {
         }
         if (x.getClass() != y.getClass()) {
             sustainResult = r.nextDouble() * 1.4 < 0.7 ? true : false;
-        }*/
+        }
 
         System.out.println(sustainResult);
         return sustainResult;
@@ -90,13 +90,16 @@ public class Human {
     public static boolean spendTime(Human x, Human y) {
         System.out.println("Spend time results: ");
         boolean spendTimeResult = true;
-       /* Random r = new Random();
+        Random r = new Random();
+        boolean p1 = (r.nextDouble() * 1.71 < 0.85 ? true : false);
+        boolean p2 = (r.nextDouble() * 1.91 < 0.95 ? true : false);
         double diff = Math.abs((x.getHeight() - y.getHeight()) / y.getHeight()) * 100;
-        if ((diff > 10) && (r.nextDouble() * 2.0 < 0.85 ? true : false))
+        if ((diff > 10) && (p1) || ((diff < 10) && (p2)))
             spendTimeResult = true;
-        if ((diff < 10) && (r.nextDouble() * 2.0 < 0.95 ? true : false))
-            spendTimeResult = true;
-        else spendTimeResult = false;*/
+
+    //    if ((diff < 10) && (true))
+    //        spendTimeResult = true;
+        else spendTimeResult = false;
         System.out.println(spendTimeResult);
         return spendTimeResult;
     }
@@ -113,12 +116,12 @@ public class Human {
             if (x.getClass() == Woman.class) {
                 w = (Woman) x;
                 m = (Man) y;
-                child = w.bornChild(m);
+                child = w.Born(m);
             }
             if (x.getClass() == Man.class) {
                 w = (Woman) y;
                 m = (Man) x;
-                child = w.bornChild(m);
+                child = w.Born(m);
             }
         }
         return child;
@@ -126,15 +129,15 @@ public class Human {
 
     public static String compatibility(Human x, Human y) {
         String str ;
-             if (Human.talk(x, y) == true
-                     && Human.sustain(x,y) == true
-                     && Human.spendTime(x,y) == true
+             if (Human.talk(x, y)
+                     && Human.sustain(x, y)
+                     && Human.spendTime(x, y)
                      && relationships(x,y) != null) {
-                 str = "YES";
+                 str = "Congratulations!!!";
                  System.out.println(str);
              }
              else {
-                 str = "NO";
+                 str = "Try again :)";
                  System.out.println(str);
              }
              return str;
